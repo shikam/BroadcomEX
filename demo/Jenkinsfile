@@ -4,22 +4,24 @@ pipeline {
             stage("Build")
             {
                 steps {
-                        echo 'Compiling the application...'
+                        echo "Compiling the application..."
+                        sh 'cd demo'
                         sh './mvnw install'
                 }
             }
             stage("Test") {
             steps {
-                        echo 'testing'
-                        sh "./mvnw test"
+                        echo "testing"
+                        sh 'cd demo'
+                        sh './mvnw test'
             }
         }
         stage("Deploy")
         {
             steps {
                 //run docker
-                        echo 'Deploying'
-                       // sh ""
+                        echo "Deploying"
+                       // sh ''
             }
         }
     }
