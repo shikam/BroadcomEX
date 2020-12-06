@@ -4,18 +4,15 @@ pipeline {
             stage("Build")
             {
                 steps {
-                        echo "Compiling the application..."
-                        sh "pwd"
-                        sh "ls -l"
-                        sh "cd /demo"
-                        echo "------------------------------"
-                        sh './demo/mvnw install'
+                        echo "Compiling the application."
+                        sh "cd demo"
+                        sh './mvnw install'
                 }
             }
             stage("Test") {
             steps {
-                        echo "testing"
-                        sh "cd /demo"
+                        echo "testing the application."
+                        sh "cd demo"
                         sh './mvnw test'
             }
         }
@@ -30,10 +27,10 @@ pipeline {
     }
     post {
         success {
-                echo "Pipeline successful"
+                echo "Pipeline successful."
         }
         failure {
-                echo "The Pipeline failed :("
+                echo "The Pipeline failed."
         }
         always {
             cleanWs()
