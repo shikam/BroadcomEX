@@ -6,6 +6,8 @@ pipeline {
                 steps {
                         echo "Compiling the application."
                         sh "cd demo"
+                        sh "pwd"
+                        sh "ls -l"
                         sh './mvnw install'
                 }
             }
