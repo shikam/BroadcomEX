@@ -5,14 +5,14 @@ pipeline {
             {
                 steps {
                         echo "Compiling the application..."
-                        sh 'cd demo'
+                        cd /demo
                         sh './mvnw install'
                 }
             }
             stage("Test") {
             steps {
                         echo "testing"
-                        sh 'cd demo'
+                        cd /demo
                         sh './mvnw test'
             }
         }
