@@ -5,19 +5,15 @@ pipeline {
             {
                 steps {
                         echo "Compiling the application."
-                        sh "cd demo/"
-                        sh "pwd"
-                        sh "ls -l"
-                        sh './demo/mvnw install'
+                        sh "chmod 755 demo/"
+                        sh "./demo/mvnw install"
                 }
             }
             stage("Test") {
             steps {
                         echo "testing the application."
-                        sh "cd demo"
-                        sh "pwd"
-                        sh "ls -l"
-                        sh './mvnw test'
+                        sh "chmod 755 demo/"
+                        sh "./demo/mvnw test"
             }
         }
         stage("Deploy")
