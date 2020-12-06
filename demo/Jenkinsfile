@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    stages {
+            stage('Build')
+            steps {
+                        echo 'Compiling the application...'
+                        sh './mvnw install'
+            }
+            stage('Test') {
+            steps {
+                        echo 'testing'
+                        sh "./mvnw test"
+            }
+        }
+        stage('Deploy')
+            steps {
+                //run docker
+                        echo 'Deploying'
+                        sh ""
+            }
+    }
+    post {
+        success {
+                echo "Pipeline successful"
+        }
+        failure {
+                echo "The Pipeline failed :("
+        }
+        always {
+            cleanWs()
+        }
+    }
+}
