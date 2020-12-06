@@ -20,8 +20,11 @@ pipeline {
         {
             steps {
                 //run docker
-                        echo "Deploying"
-                       // sh ''
+                        echo "Deploying the application"
+                        sh "docker stop myApp"
+                        sh "docker rm myApp"
+                        sh "docker build -t my-java-app ."
+                        sh "docker run -it --name myApp -p 8000:8080 my-java-app"
             }
         }
     }
