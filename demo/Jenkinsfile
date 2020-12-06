@@ -2,22 +2,26 @@ pipeline {
     agent any
     stages {
             stage("Build")
-            steps {
+            {
+                steps {
                         echo 'Compiling the application...'
-                   //     sh './mvnw install'
+                        sh './mvnw install'
+                }
             }
             stage("Test") {
             steps {
                         echo 'testing'
-                     //   sh "./mvnw test"
+                        sh "./mvnw test"
             }
         }
         stage("Deploy")
+        {
             steps {
                 //run docker
                         echo 'Deploying'
                        // sh ""
             }
+        }
     }
     post {
         success {
